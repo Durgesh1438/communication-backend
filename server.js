@@ -25,7 +25,7 @@ app.post('/api/google-login', async (req, res,) => {
     const payload = ticket.getPayload();
     console.log(payload)
     const token=jwt.sign({userId:payload.sub,email:payload.email,username:payload.name},process.env.MY_SECRET_KEY,{expiresIn:'2h'})
-    /*
+  
     const response = await axios.post('https://api.postmarkapp.com/email/withTemplate', {
       From: 'kovvuri61.ugec20@iiitranchi.ac.in', // Replace with your sender email
       To: payload.email,
@@ -40,7 +40,7 @@ app.post('/api/google-login', async (req, res,) => {
         'X-Postmark-Server-Token': process.env.POSTMARK_API_TOKEN
       }
     });
-    console.log(response.data)*/
+    console.log(response.data)
     res.status(200).json({
         token,
         username:payload.name,
